@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Meenu </title>
+<title>For Meenu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
@@ -21,10 +21,7 @@ body{
   font-family: Arial, sans-serif;
 }
 
-.container{
-  padding:20px;
-  z-index:2;
-}
+.container{padding:20px;z-index:2;}
 
 h1{
   color:#8b0000;
@@ -44,12 +41,18 @@ button{
   cursor:pointer;
 }
 
-/* Floating emoji hearts */
+/* Twemoji images */
+.emoji{
+  width:1.2em;
+  height:1.2em;
+  vertical-align:-0.25em;
+}
+
+/* Floating hearts */
 .heart{
   position:absolute;
   bottom:-30px;
   animation:float 14s linear infinite;
-  font-size:24px;
   opacity:0.9;
 }
 @keyframes float{
@@ -92,7 +95,6 @@ button{
   bottom:22px;
   left:50%;
   transform:translateX(-50%);
-  font-size:30px;
 }
 
 /* Letter */
@@ -140,25 +142,30 @@ button{
 <audio id="paperSound" src="paper.mp3"></audio>
 
 <div class="container" id="app">
-  <h1>HI MEENU, SOMETHING SPECIAL FOR MY SPECIAL BABY </h1>
-  <button id="startBtn"></button>
+  <h1>
+    HI MEENU, SOMETHING SPECIAL FOR MY SPECIAL BABY
+    <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+  </h1>
+  <button id="startBtn">
+    <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f644.svg">
+  </button>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-  const app = document.getElementById("app");
-  const music = document.getElementById("music");
-  const envSound = document.getElementById("envSound");
-  const paperSound = document.getElementById("paperSound");
+  const app=document.getElementById("app");
+  const music=document.getElementById("music");
+  const envSound=document.getElementById("envSound");
+  const paperSound=document.getElementById("paperSound");
 
-  /* Floating emoji hearts */
+  /* floating hearts */
   setInterval(()=>{
     let h=document.createElement("div");
     h.className="heart";
-    h.innerHTML="";
+    h.innerHTML='<img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">';
     h.style.left=Math.random()*100+"vw";
-    h.style.animationDuration=(12+Math.random()*6)+"s";
+    h.style.fontSize=(18+Math.random()*28)+"px";
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),16000);
   },1200);
@@ -181,8 +188,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
   function step2(){
     app.innerHTML=`
-      <h1>MEENU I HAVE SOMETHING THAT I WANT TO SAY </h1>
-      <button id="btn2">kya hai </button>
+      <h1>
+        MEENU I HAVE SOMETHING THAT I WANT TO SAY
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+      </h1>
+      <button id="btn2">
+        kya hai
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f644.svg">
+      </button>
     `;
     document.getElementById("btn2").addEventListener("click", step3);
   }
@@ -192,9 +205,14 @@ document.addEventListener("DOMContentLoaded", function(){
       <div class="envelope" id="env">
         <div class="flap"></div>
         <div class="envelope-body"></div>
-        <div class="seal"></div>
+        <div class="seal">
+          <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+        </div>
       </div>
-      <button id="openBtn">open it </button>
+      <button id="openBtn">
+        open it
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f644.svg">
+      </button>
     `;
     document.getElementById("openBtn").addEventListener("click", ()=>{
       envSound.play().catch(()=>{});
@@ -208,27 +226,21 @@ document.addEventListener("DOMContentLoaded", function(){
     app.innerHTML=`
 <div class="letter">
 meenu, my sunshine, my sweetheart, my senorita, my baby, my prettiest girl,
-you're so so special to me, you're literally my everything, you've taught me how
-to love, how to smile, how to be strong, you've given me the best time of my life,
-you've given me love care and support that i never got before.
+you're so so special to me, you're literally my everything.
 
 <br><br>
-i fall for you even more everytime i look at you, and your pretty smile, and your
-pretty heart. thori si dumb ho, lekin ho to phir bhi meri na? may hun na smbhalnay
-ke liye.
+i fall for you even more everytime i look at you and your pretty smile.
+thori si dumb ho, lekin ho to phir bhi meri na? may hun na smbhalnay ke liye.
 
 <br><br>
-i love you so much meri jaan. i have loved you like i have not loved anything and
-anyone in my entire life. i never knew i could love so deeply before i met you,
-i thank god for making me fall in love with you, romantically, deeply, and so
-purely.
+i love you so much meri jaan. i will always love you meenu
+<img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
 
 <br><br>
-you're what my whole life revolves around, not even kidding. my life feels empty
-without you. I will always love you meenu 
-
-<br><br>
-love,<br><b>Your Shayanu </b>
+love,<br>
+<b>Your Shayanu
+<img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f496.svg">
+</b>
 </div>
 <button id="nextBtn">next</button>
     `;
@@ -237,8 +249,14 @@ love,<br><b>Your Shayanu </b>
 
   function step4(){
     app.innerHTML=`
-      <h1>so meenu i have to ask you this </h1>
-      <button id="askBtn">poocho </button>
+      <h1>
+        so meenu i have to ask you this
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+      </h1>
+      <button id="askBtn">
+        poocho
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f644.svg">
+      </button>
     `;
     document.getElementById("askBtn").addEventListener("click", step5);
   }
@@ -247,10 +265,18 @@ love,<br><b>Your Shayanu </b>
 
   function step5(){
     app.innerHTML=`
-      <div class="big-heart"></div>
+      <div class="big-heart">
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+      </div>
       <h1 id="q">Will you be my valentine, meenu?</h1>
-      <button id="yes">Yes </button>
-      <button id="no">No </button>
+      <button id="yes">
+        Yes
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f496.svg">
+      </button>
+      <button id="no">
+        No
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f612.svg">
+      </button>
     `;
     document.getElementById("yes").addEventListener("click", yes);
     document.getElementById("no").addEventListener("click", no);
@@ -258,7 +284,7 @@ love,<br><b>Your Shayanu </b>
 
   function no(){
     noClicks++;
-    document.getElementById("q").innerText="are you sure ? ";
+    document.getElementById("q").innerText="are you sure ?";
     let y=document.getElementById("yes");
     y.style.transform=`scale(${1+noClicks*0.25})`;
     if(noClicks>=5){
@@ -271,8 +297,17 @@ love,<br><b>Your Shayanu </b>
 
   function yes(){
     app.innerHTML=`
-      <h1>I KNEW YOU'D SAY YES </h1>
-      <h1>THANK YOU MEENUUU I LOVE YOU SO MUCHHHHH </h1>
+      <h1>
+        I KNEW YOU'D SAY YES
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f62d.svg">
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg">
+      </h1>
+      <h1>
+        THANK YOU MEENUUU I LOVE YOU SO MUCHHHHH
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f496.svg">
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f496.svg">
+        <img class="emoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f496.svg">
+      </h1>
     `;
   }
 
