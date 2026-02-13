@@ -13,8 +13,19 @@ margin:0;
 background:#ffb6c1;
 font-family:Arial;
 text-align:center;
-overflow:hidden;
 }
+
+/* MAIN CONTAINER */
+#app{
+padding:20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+height:100vh;
+}
+
+/* BUTTON */
 button{
 padding:14px 26px;
 font-size:18px;
@@ -25,32 +36,45 @@ color:white;
 font-weight:bold;
 margin-top:15px;
 }
+
+/* SCROLL LETTER BOX */
 .letter{
-max-height:75vh;
-overflow:auto;
+width:100%;
+max-width:500px;
+height:55vh;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
 background:#fffdf7;
 padding:20px;
 border-radius:12px;
 font-family:'Pacifico';
+text-align:left;
 }
+
+/* PHOTO */
 .photo{
-width:80%;
+width:85%;
+max-width:320px;
 border-radius:20px;
-margin-top:20px;
+margin-bottom:15px;
 }
+
+/* HEART ANIMATION */
 .big-heart{
 font-size:90px;
 animation:pulse 1.5s infinite;
 }
-@keyframes pulse{50%{transform:scale(1.3);}}
+@keyframes pulse{50%{transform:scale(1.2);}}
+
+/* FIREWORKS + FLOWERS */
 .firework,.flower{
-position:absolute;
+position:fixed;
+top:-50px;
 font-size:24px;
 animation:fall 3s linear infinite;
 }
 @keyframes fall{
-from{transform:translateY(-100vh);}
-to{transform:translateY(100vh);}
+to{transform:translateY(110vh);}
 }
 </style>
 </head>
@@ -65,30 +89,29 @@ to{transform:translateY(100vh);}
 
 const app = document.getElementById("app");
 const music = document.getElementById("music");
-
 let noClicks=0;
 
 /* PASSWORD */
 app.innerHTML = `
 <h2>Hint: what you call me 🤍</h2>
 <input type="password" id="pass">
-<br><button onclick="checkPass()">Enter</button>
+<button onclick="checkPass()">Enter</button>
 `;
 
 function checkPass(){
-if(document.getElementById("pass").value.toLowerCase()=="shayanu"){
+if(pass.value.toLowerCase()=="shayanu"){
 music.play();
 start();
 }else{
-alert("wrong baby 😭 try again");
+alert("wrong baby 😭");
 }
 }
 
-/* START SCREEN */
+/* START */
 function start(){
 app.innerHTML=`
-<h1>HI MEENU, SOMETHING SPECIAL FOR MY SPECIAL BABY <img src="heart.png" width="20"></h1>
-<button onclick="showLetter()"><img src="eyeroll.png" width="20"></button>
+<h2>HI MEENU, SOMETHING SPECIAL FOR MY SPECIAL BABY ❤️</h2>
+<button onclick="showLetter()">🙄</button>
 `;
 }
 
@@ -124,44 +147,35 @@ baby, you're the queen of my heart, you're the woman of my heart, i see you as a
 function countdown(){
 let count=3;
 app.innerHTML=`<h1>${count}</h1>`;
-let timer=setInterval(()=>{
+let t=setInterval(()=>{
 count--;
 app.innerHTML=`<h1>${count}</h1>`;
-if(count==0){
-clearInterval(timer);
-proposal();
-}
+if(count==0){clearInterval(t);proposal();}
 },1000);
 }
 
 /* PROPOSAL */
 function proposal(){
 app.innerHTML=`
-<div class="big-heart"><img src="heart.png" width="90"></div>
-<h1 id="q">Will you be my valentine, meenu?</h1>
-<button id="yes" onclick="yes()">Yes <img src="sparkle.png" width="18"></button>
-<button id="no" onclick="no()">No <img src="cry.png" width="18"></button>
+<div class="big-heart">❤️</div>
+<h2 id="q">Will you be my valentine, meenu?</h2>
+<button id="yes" onclick="yes()">Yes 💖</button>
+<button id="no" onclick="no()">No 😭</button>
 `;
 }
 
 function no(){
 noClicks++;
-document.getElementById("q").innerText="are you sure ?";
-let y=document.getElementById("yes");
-y.style.transform=`scale(${1+noClicks*0.3})`;
-
-if(noClicks>=5){
-document.getElementById("no").remove();
-y.style.width="100vw";
-y.style.height="100vh";
-}
+q.innerText="are you sure ?";
+yes.style.transform=`scale(${1+noClicks*0.3})`;
+if(noClicks>=5){no.remove();}
 }
 
-/* YES */
+/* YES FINAL */
 function yes(){
 app.innerHTML=`
 <h1>I KNEW YOU'D SAY YES 😭❤️</h1>
-<h1>THANK YOU MEENUUU I LOVE YOU SO MUCHHHHH 💖</h1>
+<h2>THANK YOU MEENUUU I LOVE YOU SO MUCHHHHH 💖</h2>
 `;
 
 fireworks();
@@ -170,18 +184,18 @@ setTimeout(()=>{
 app.innerHTML+=`<img src="kiss.gif" width="250">`;
 },3000);
 
-setTimeout(()=>{
-let fade=setInterval(()=>{
-if(music.volume>0.05){
-music.volume-=0.05;
-}else{
-music.pause();
-clearInterval(fade);
-}
-},300);
-},10000);
+setTimeout(fadeMusic,10000);
 }
 
+/* MUSIC FADE */
+function fadeMusic(){
+let fade=setInterval(()=>{
+if(music.volume>0.05){music.volume-=0.05;}
+else{music.pause();clearInterval(fade);}
+},300);
+}
+
+/* FIREWORKS */
 function fireworks(){
 setInterval(()=>{
 let f=document.createElement("div");
