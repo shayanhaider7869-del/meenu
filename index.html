@@ -75,9 +75,9 @@ const music = document.getElementById("music");
 
 let noClicks=0;
 
-/* PASSWORD */
+/* PASSWORD SCREEN */
 app.innerHTML = `
-<h2>Hint: the name that lives in my heart for you </h2>
+<h2>Hint: what you call me </h2>
 <input type="password" id="pass">
 <br><button onclick="checkPass()">Enter</button>
 `;
@@ -99,7 +99,7 @@ app.innerHTML=`
 `;
 }
 
-/* ORIGINAL LETTER (FULL — UNTOUCHED) */
+/* LETTER */
 function showLetter(){
 app.innerHTML=`
 <div class="letter">
@@ -107,6 +107,7 @@ app.innerHTML=`
 meenu, my sunshine, my sweetheart, my senorita, my baby, my prettiest girl, you're so so special to me, you're literally my everything, you've taught me how to love, you've taught me how to smile, youve taught me how to be strong, youve given me the best time of my life, you've given me love care and support that i never got before, i fall for you even more everytime i look at you, and your pretty smile, and your pretty heart. thori si dumb ho, lekin ho to phir bhi meri na? may hun na smbhalnay ke liye. i love you so much meri jaan. i have loved you like i have not loved anything and anyone in my entite life. i never knew i could love so deeply before i met you, i thank god for making me fall in love with you, romantically, deeply, and so purely. you're what my whole life revolves around, not even kidding. my life feels empty without you. I will always love you meenu, and my love will never change, always pure, free from bad intentions, divine, and sincere. yes i believe pure love is divine meenu, its free from this worlds impurities, and i feel it with you. it is YOU for me. Your shayanu will always love you meenu, i will always have butterflies seeing you smile and laugh, when i will look into your pretty eyes. i would fall in love with you a thousand times over, if it just meant staring into your pretty eyes once more. you're so pretty, you're so pure, you're my everything, forever, I love you meenu, love, your shayanu
 
 </div>
+
 <button onclick="photoSlide()">next</button>
 `;
 }
@@ -176,7 +177,6 @@ setTimeout(()=>{
 app.innerHTML+=`<img src="kiss.gif" width="250">`;
 },3000);
 
-/* MUSIC FADE AFTER 10s */
 setTimeout(()=>{
 let fade=setInterval(()=>{
 if(music.volume>0.05){
