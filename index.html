@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
 background:#ffb6c1;
@@ -15,29 +16,17 @@ font-family:Arial;
 text-align:center;
 }
 
-/* MAIN CONTAINER */
 #app{
-padding:20px;
+height:100vh;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:flex-start;
-height:100vh;
+padding:20px;
+box-sizing:border-box;
 }
 
-/* BUTTON */
-button{
-padding:14px 26px;
-font-size:18px;
-border:none;
-border-radius:30px;
-background:#ff4d6d;
-color:white;
-font-weight:bold;
-margin-top:15px;
-}
-
-/* SCROLL LETTER BOX */
+/* SCROLL BOX */
 .letter{
 width:100%;
 max-width:500px;
@@ -49,6 +38,18 @@ padding:20px;
 border-radius:12px;
 font-family:'Pacifico';
 text-align:left;
+margin-bottom:15px;
+}
+
+/* BUTTON */
+button{
+padding:14px 26px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+font-weight:bold;
 }
 
 /* PHOTO */
@@ -59,23 +60,26 @@ border-radius:20px;
 margin-bottom:15px;
 }
 
-/* HEART ANIMATION */
 .big-heart{
 font-size:90px;
 animation:pulse 1.5s infinite;
 }
-@keyframes pulse{50%{transform:scale(1.2);}}
 
-/* FIREWORKS + FLOWERS */
+@keyframes pulse{
+50%{transform:scale(1.2);}
+}
+
 .firework,.flower{
 position:fixed;
 top:-50px;
 font-size:24px;
 animation:fall 3s linear infinite;
 }
+
 @keyframes fall{
 to{transform:translateY(110vh);}
 }
+
 </style>
 </head>
 
@@ -95,6 +99,7 @@ let noClicks=0;
 app.innerHTML = `
 <h2>Hint: what you call me 🤍</h2>
 <input type="password" id="pass">
+<br><br>
 <button onclick="checkPass()">Enter</button>
 `;
 
@@ -124,7 +129,7 @@ meenu, my sunshine, my sweetheart, my senorita, my baby, my prettiest girl, you'
 
 </div>
 
-<button onclick="photoSlide()">next</button>
+<button onclick="photoSlide()">NEXT</button>
 `;
 }
 
@@ -139,7 +144,7 @@ baby, you're the queen of my heart, you're the woman of my heart, i see you as a
 
 </div>
 
-<button onclick="countdown()">next</button>
+<button onclick="countdown()">NEXT</button>
 `;
 }
 
@@ -171,7 +176,7 @@ yes.style.transform=`scale(${1+noClicks*0.3})`;
 if(noClicks>=5){no.remove();}
 }
 
-/* YES FINAL */
+/* YES */
 function yes(){
 app.innerHTML=`
 <h1>I KNEW YOU'D SAY YES 😭❤️</h1>
